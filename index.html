@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Etsy </title>
+  <link rel="stylesheet" href="styles/stylesheet.css">
+</head>
+<body class="container">
+
+  <div>
+    <img id="etsy" src="https://img0.etsystatic.com/031/0/5170423/il_340x270.548956212_ilvs.jpg" ALT="The Taj Mahal"/>
+
+  <div class="mainBagContainer">
+
+
+
+  </div>
+
+
+<script src="styles/bower_components/jquery/dist/jquery.js"></script>
+
+
+<script type="text/template" data-template-name="bag-item">
+
+
+  <div class="col">
+
+    <div>
+      <img class="image" src=" <% image %> "/>
+    </div>
+    <div>
+      <h5 class="title"> <% title %> </h5>
+    </div>
+
+    <div class="owner">
+      <div class= "ownerone"> <h6> <a href=" <% url %>" > <% shop %> </a>  </h6> </div>
+      <div class="ownertwo"> <h6> <% price %> <% currency %> </h6> </div>
+    </div><br>
+
+  </div>
+
+</script>
+
+
+<script type="text/javascript" src="styles/data.js"> </script>
+<script type="text/javascript" src="styles/main.js"> </script>
+
+</body>
+</html>

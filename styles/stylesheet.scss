@@ -1,0 +1,79 @@
+@import 'bourbon/bourbon';
+$visual-grid: false;
+@import 'neat/neat';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+.container {
+  @include outer-container;
+  height: 600px;
+  margin-left:50px;
+}
+
+#etsy{
+  position: inline-block;
+  max-height: 100px;
+  max-width: 200px;
+  width: 120px;
+  height: 120px;
+  align: left;
+  background: white;
+
+}
+
+.row {
+
+
+}
+
+.col {
+  @include span-columns(3);
+  @include omega(3n);
+  margin-bottom: 10px;
+  text-align:center;
+  float: left;
+  background-color: rgb (255,255,255);
+  border: 1px solid #cccccc;
+  padding:0px;
+
+}
+
+.image{
+
+  margin-top:10px;
+  border: 1px solid #cccccc;
+}
+.title{
+  display: inline-block;
+  width:150px;
+  text-align: left;
+  white-space: nowrap;      //keep the text on one line
+  overflow: hidden;         //prevent the text from being shown outside the border
+  text-overflow: ellipsis;
+}
+
+.owner {
+  text-align: left;
+  display: inline-block;
+  float: left;
+  margin-left:40px;
+  margin-right: 40px;
+
+}
+
+.ownerone {
+  display: inline-block;
+  float: left;
+
+
+}
+
+.ownertwo {
+
+  display: inline-block;
+  float: right;
+
+}
