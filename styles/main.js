@@ -1,18 +1,7 @@
 (function(){
   'use strict';
 
-
-
-
-
 /**connect the function output to the ul listing*/
-
-
-
-
-
-
-
 
 // ready to laod the page, start the sequence
 
@@ -24,13 +13,78 @@ $(document).ready(function(){
   var $list = $('.mainBagContainer');
 
 
+  $( "button" ).click(function() {
+    $("text").text();
+
+    console.log(text);
+  });
+
+
+  $.ajax({
+    url: "https://api.etsy.com/v2/listings/active.js?api_key=cdwxq4soa7q4zuavbtynj8wx&keywords=mens + leather + bags &includes=Images,Shop",
+    dataType: 'jsonp'
+  }).done(function(data){
+    console.log(data);
+  });
+
+
+
+      $( "#highest" ).click(function() {
+        var sorter = results.sort(function(a, b){
+          return b.price-a.price;
+
+
+        });
+
+        $list.empty();
+        filter(sorter);
+
+      });
+
+        $( "#lowest" ).click(function() {
+
+            var sorter = results.sort(function(a, b){
+           return a.price-b.price;
+
+            });
+            $list.empty();
+            filter(sorter);
+
+      });
+
+
+// filter made a function
+
+          function filter(resulter){
+
+            resulter.forEach(function(item){
+
+              var bagUpdate = renderTemplate('bag-item', {
+                title: item.title,
+                shop: item.Shop.shop_name,
+                price: item.price,
+                currency: item.currency_code,
+                image: item.Images[0].url_170x135,
+                url: item.url
+              });
+
+              //append to the HTML the rendered info
+
+              $list.append(bagUpdate);
+            });
+
+            }
+
+
+
  // overall function
 
-results.forEach(function(item){
+//
+  results.forEach(function(item){
 
-
-
-// template implementation
+//
+// // template implementation//
+//
 
   var bagUpdate = renderTemplate('bag-item', {
       title: item.title,
@@ -59,17 +113,5 @@ results.forEach(function(item){
       return $template;
     }
 
+
   })();
-
-
-  // '<div class="col">'+
-  //
-  // '<div>' + '<img class="item-image" src="' + item.Images[0].url_170x135 +'"/>'+ '</div>' +
-  //
-  // '<div>' + '<h5 class="title">' + item.title + '</h5>' + '</div>' +
-  //
-  // '<div class="owner">' +  '<div class= "ownerone">' + '<h6>' + '<a href="' + item.url + '">' + item.Shop.shop_name + '</a>' +  '</h6>' + '</div>' + '<div class="ownertwo">' + '<h6>' + item.price + item.currency_code + '</h6>' + '</div>' +
-  // '</div>' +
-  //
-  // '</div>'
-  //
