@@ -6,30 +6,27 @@
   <link rel="stylesheet" href="styles/stylesheet.css">
 </head>
 <body class="container">
+  <header class="wrapper">
 
-  <div>
-    <div class="header">
+
     <div>
     <img id="etsy" src="https://img0.etsystatic.com/031/0/5170423/il_340x270.548956212_ilvs.jpg" alt="The Taj Mahal"/>
     </div>
 
-    <button id="highest">
-      Highest price
-    </button>
-    <button id="lowest">
-      Lowest price
-    </button>
+    <div>
+    <button id="highest">Highest price</button>
+    <button id="lowest">Lowest price</button>
+    </div>
 
     <div>
-
-      <div id="target">
-        <input type="text" placeholder="Search..." required>
-        <input type="button" value="Search">
-      </div>
-
+      <label></label>
+      <input type="search" id="search" />
+      <button id="searchbutton"> Search </button>
     </div>
-</div>
-</div>
+  </header>
+
+
+
   <!--   <div>
   <label for="sort"></label><br>
   <select name="select">
@@ -38,25 +35,23 @@
 
   </select></br>
     </div> -->
-    </div>
+
 
   <div class="mainBagContainer">
-
-
-
   </div>
 
-  </div>
+
+
 
 
 <script src="styles/bower_components/jquery/dist/jquery.js"></script>
+
+
 <script type="text/template" data-template-name="bag-item">
 
 
 
   <div class="col">
-
-
     <div>
       <img class="image" src=" <% image %> "/>
     </div>

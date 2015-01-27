@@ -1,32 +1,58 @@
 (function(){
   'use strict';
 
-/**connect the function output to the ul listing*/
+//connect the function output to the ul listing
 
 // ready to laod the page, start the sequence
 
-$(document).ready(function(){
+  $(document).ready(function(){
 
-//
+
 // link to the HTML
 
   var $list = $('.mainBagContainer');
+  // var resultstwo = rawEtsyDatatwo.results;
 
 
-  $( "button" ).click(function() {
-    $("text").text();
 
-    console.log(text);
-  });
 
+//Get JSON data from Etsy
+
+          $.ajax({
+            url: "https://api.etsy.com/v2/listings/active.js?api_key=cdwxq4soa7q4zuavbtynj8wx&keywords=leather + man + bags&includes=Images,Shop",
+            dataType: 'jsonp'
+          }).done(function(data){
+            renderResults(data.results);
+            
+          });
+
+
+//Get JSON data from Etsy based on search.
+
+$('#searchbutton').on('click', function(){
 
   $.ajax({
-    url: "https://api.etsy.com/v2/listings/active.js?api_key=cdwxq4soa7q4zuavbtynj8wx&keywords=mens + leather + bags &includes=Images,Shop",
+    url: "https://api.etsy.com/v2/listings/active.js?api_key=cdwxq4soa7q4zuavbtynj8wx&keywords=" + $('#search').val() + "&includes=Images,Shop",
     dataType: 'jsonp'
-  }).done(function(data){
-    console.log(data);
+  }).done(function(datatwo){
+    renderResults(datatwo.results);
+    console.log(datatwo);
   });
 
+
+
+
+
+
+console.log($('#search').val());
+});
+
+
+
+
+
+
+//high and low price sorting
 
 
       $( "#highest" ).click(function() {
@@ -41,16 +67,17 @@ $(document).ready(function(){
 
       });
 
-        $( "#lowest" ).click(function() {
+      $( "#lowest" ).click(function() {
 
-            var sorter = results.sort(function(a, b){
-           return a.price-b.price;
+        var sorter = results.sort(function(a, b){
+          return a.price-b.price;
 
-            });
-            $list.empty();
-            filter(sorter);
+        });
+        $list.empty();
+        filter(sorter);
 
       });
+
 
 
 // filter made a function
@@ -75,18 +102,16 @@ $(document).ready(function(){
 
             }
 
-
-
  // overall function
 
-//
+function renderResults(results){
   results.forEach(function(item){
 
-//
-// // template implementation//
-//
 
-  var bagUpdate = renderTemplate('bag-item', {
+    // template implementation
+
+
+    var bagUpdate = renderTemplate('bag-item', {
       title: item.title,
       shop: item.Shop.shop_name,
       price: item.price,
@@ -95,12 +120,16 @@ $(document).ready(function(){
       url: item.url
     });
 
-//append to the HTML the rendered info
+    //append to the HTML the rendered info
 
     $list.append(bagUpdate);
   });
 
-});
+
+
+}
+
+
 
 
 // template structure defined
@@ -113,5 +142,5 @@ $(document).ready(function(){
       return $template;
     }
 
-
-  })();
+});
+}) ();

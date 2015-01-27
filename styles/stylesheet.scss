@@ -6,6 +6,11 @@ $visual-grid: true;
   box-sizing: border-box;
 }
 
+body{
+
+  background:black;
+}
+
 form {
   width: 500px;
   margin: 50px auto;
@@ -34,7 +39,7 @@ form {
 
 .container {
   @include outer-container;
-  background: RGB(245, 245, 241);
+  background: black;
   height: 600px;
   margin-left:50px;
 
@@ -48,6 +53,7 @@ form {
   height: 120px;
   align: left;
   background: white;
+  border: 1px solid grey;
 
 }
 
